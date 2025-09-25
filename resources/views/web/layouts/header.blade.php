@@ -25,7 +25,7 @@
         <ul>
           <li><a href="#hero">Halaman Utama</a></li>
           <li><a href="#ticket">Tiket</a></li>
-          <li><a href="#order">Pesan Tiket</a></li>
+          <li><a href="{{ route('orderTicket') }}">Pesan Tiket</a></li>
           <li><a href="#contact">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

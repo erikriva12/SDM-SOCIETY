@@ -46,12 +46,14 @@
       <div class="row align-items-center">
         <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
           <div class="content">
-            <h2>Crafting meaningful experiences through thoughtful design and innovative solutions</h2>
-            <p class="lead">We believe in the power of purposeful creation, where every detail serves a greater vision and
-              every project becomes a testament to our commitment to excellence.</p>
-            <p>Our journey began with a simple philosophy: to transform ideas into reality through meticulous attention to
-              detail and an unwavering dedication to quality. Today, we continue to push boundaries while staying true to
-              our core values of authenticity, innovation, and meaningful impact.</p>
+            <h2>Society of Screams Fest 2025</h2>
+            <p>
+              Musik elektronik kini bukan hanya hiburan, tapi ruang interaksi sosial, gaya hidup, dan medium kreativitas.
+              <br /><br />
+              <strong>Tanggal Pre-Event:</strong> 30 September 2025 <br />
+              <strong>Tanggal Main Event:</strong> 24 Oktober 2025 <br />
+              <strong>Tempat:</strong> BRUNO AGUSTO HQ, Dau, Malang<br>
+            </p>
             <div class="stats-wrapper">
               <div class="stat-item">
                 <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="100"
@@ -61,8 +63,8 @@
 
             </div>
             <div class="cta-wrapper">
-              <a href="#order" class="btn-link">
-                Discover our story
+              <a href="{{ route('orderTicket') }}" class="btn-link">
+                Pesan Tiket Sekarang
                 <i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -74,11 +76,9 @@
             <img src="assets/img/about/about-1.webp" alt="About us" class="img-fluid">
             <div class="floating-element">
               <div class="quote-content">
-                <blockquote>
-                  "Excellence is never an accident. It is always the result of high intention, sincere effort, and
-                  intelligent execution."
-                </blockquote>
-                <cite>— Aristotle</cite>
+                <blockquote> Bergabunglah dalam pesta horor penuh misteri, dentuman musik EDM, cahaya, dan teriakan <b>The
+                    Party Never Ends....</b></blockquote>
+                <!-- <cite>— Aristotle</cite> -->
               </div>
             </div>
           </div>

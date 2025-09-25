@@ -2,11 +2,21 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function ()
+Route::withoutMiddleware(['auth'])->group(function ()
 {
-    return view('web.index');
+
+    Route::get('/', [WebsiteController::class, 'index']);
+    Route::get('/pesan-tiket', [WebsiteController::class, 'orderTicket'])->name('orderTicket');
+    // routes/web.php
+    Route::get('/get-provinsi', [WebsiteController::class, 'getProvinsi'])->name('getProvinsi');
+    Route::get('/get-kabupaten/{provinsi_id}', [WebsiteController::class, 'getKabupaten'])->name('getKabupaten');
+    Route::get('/get-kecamatan/{kabupaten_id}', [WebsiteController::class, 'getKecamatan'])->name('getKecamatan');
+    Route::post('/store-pemesanan', [WebsiteController::class, 'storepemesanan'])->name('storepemesanan');
+
+
 });
 
 Auth::routes();
