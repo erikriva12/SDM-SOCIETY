@@ -1,6 +1,6 @@
 <footer id="footer" class="footer dark-background">
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="row gy-5">
 
       <div class="col-lg-4">
@@ -95,14 +95,14 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
 
   <div class="footer-bottom">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="copyright">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">SDM Society</strong> <span>All Rights
                 Reserved</span></p>
           </div>
         </div>
@@ -117,7 +117,7 @@
             <!-- You can delete the links only if you've purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://www.instagram.com/sdmsociety/">SDM Society</a>
           </div>
         </div>
       </div>
@@ -127,8 +127,15 @@
 </footer>
 
 <!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center mb-3"><i
     class="bi bi-arrow-up-short"></i></a>
+
+<!-- <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><img
+    src="{{asset('assets/img/wa.png')}}" alt="" style="width: 50px;"></a> -->
+
+<a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
 
 <!-- Preloader -->
 <div id="preloader"></div>

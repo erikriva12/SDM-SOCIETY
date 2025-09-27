@@ -10,10 +10,8 @@ class Kabupaten extends Model
 {
     use HasFactory;
 
-    protected $table = 'master.kabupaten';
+    protected $table = 'kabupaten';
     protected $primaryKey = 'kabupaten_id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
     'kabupaten_id',
@@ -22,16 +20,7 @@ class Kabupaten extends Model
     'nama',
     ];
 
-    protected static function booted()
-    {
-        static::creating(function ($model)
-        {
-            if (!$model->kabupaten_id)
-            {
-                $model->kabupaten_id = (string)Str::uuid();
-            }
-        });
-    }
+
 
     public function provinsi()
     {

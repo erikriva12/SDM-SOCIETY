@@ -10,10 +10,8 @@ class Kecamatan extends Model
 {
     use HasFactory;
 
-    protected $table = 'master.kecamatan';
+    protected $table = 'kecamatan';
     protected $primaryKey = 'kecamatan_id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
     'kecamatan_id',
@@ -22,16 +20,6 @@ class Kecamatan extends Model
     'nama',
     ];
 
-    protected static function booted()
-    {
-        static::creating(function ($model)
-        {
-            if (!$model->kecamatan_id)
-            {
-                $model->kecamatan_id = (string)Str::uuid();
-            }
-        });
-    }
 
     public function kabupaten()
     {

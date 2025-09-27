@@ -10,10 +10,8 @@ class TransaksiTiket extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'ticketing.transaksi_tiket';
+    protected $table = 'transaksi_tiket';
     protected $primaryKey = 'transaksi_tiket_id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
     'transaksi_tiket_id',
@@ -25,19 +23,6 @@ class TransaksiTiket extends Model
     'kode_transaksi',
     'urutan_kode_transaksi',
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model)
-        {
-            if (empty($model->{$model->getKeyName()}))
-            {
-                $model->{$model->getKeyName()} = (string)Str::uuid();
-            }
-        });
-    }
 
     // Relasi ke Customer
     public function customer()

@@ -10,13 +10,10 @@ class Customer extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'ticketing.customer';
+    protected $table = 'customer';
     protected $primaryKey = 'id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
-    'id',
     'nama',
     'alamat',
     'no_wa',
@@ -25,20 +22,9 @@ class Customer extends Model
     'provinsi_id',
     'kota_id',
     'kecamatan_id',
+    'desa_id',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model)
-        {
-            if (empty($model->{$model->getKeyName()}))
-            {
-                $model->{$model->getKeyName()} = (string)Str::uuid();
-            }
-        });
-    }
 
     // Relasi ke master wilayah
     public function provinsi()

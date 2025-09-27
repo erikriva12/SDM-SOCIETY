@@ -14,6 +14,8 @@ Route::withoutMiddleware(['auth'])->group(function ()
     Route::get('/get-provinsi', [WebsiteController::class, 'getProvinsi'])->name('getProvinsi');
     Route::get('/get-kabupaten/{provinsi_id}', [WebsiteController::class, 'getKabupaten'])->name('getKabupaten');
     Route::get('/get-kecamatan/{kabupaten_id}', [WebsiteController::class, 'getKecamatan'])->name('getKecamatan');
+    Route::get('/get-desa/{kecamatan_id}', [WebsiteController::class, 'getDesa'])->name('getDesa');
+    Route::get('/migrasi', [WebsiteController::class, 'migrasi']);
     Route::post('/store-pemesanan', [WebsiteController::class, 'storepemesanan'])->name('storepemesanan');
 
 

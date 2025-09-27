@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Desa;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use App\Models\Provinsi;
 use Illuminate\Http\Request;
 use App\Models\TransaksiTiket;
+use Illuminate\Queue\Console\ForgetFailedCommand;
 use Illuminate\Support\Facades\DB;
 
 class WebsiteController extends Controller
@@ -96,6 +98,25 @@ class WebsiteController extends Controller
 
         return response()->json($results);
     }
+    public function getDesa(Request $request, $kecamatan_id)
+    {
+        $search = $request->input('term');
+
+        $query = Desa::where('kecamatan_id', $kecamatan_id);
+        if (!empty($search))
+        {
+            $query->where('nama', 'ILIKE', "%{$search}%");
+        }
+
+        $kecamatan = $query->orderBy('nama')->get();
+
+        $results = $kecamatan->map(fn($item) => [
+            'id' => $item->desa_id,
+            'text' => $item->nama
+        ]);
+
+        return response()->json($results);
+    }
 
 
     public function storepemesanan(Request $request)
@@ -114,6 +135,7 @@ class WebsiteController extends Controller
                     'provinsi_id' => $request->provinsi_id,
                     'kota_id' => $request->kota_id,
                     'kecamatan_id' => $request->kecamatan_id,
+                    'desa_id' => $request->desa_id,
                 ]
             );
 
@@ -135,7 +157,7 @@ class WebsiteController extends Controller
 
             // Simpan transaksi tiket
             $dataPemesananTiket = TransaksiTiket::create([
-                'customer_id' => $dataCustomer->customer_id,
+                'customer_id' => $dataCustomer->id,
                 'jumlah_tiket' => $jumlahTiket,
                 'harga_tiket' => $hargaTiket,
                 'total_bayar' => $totalBayar,
@@ -165,6 +187,20 @@ class WebsiteController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+    public function migrasi()
+    {
+        $kecamatan = Kecamatan::whereNotNull('nama')->get();
+
+        foreach ($kecamatan as $valueKeca)
+        {
+            Desa::where('kecamatan_uuid', $valueKeca->kecamatan_uuid)
+                ->whereNull('kecamatan_id')
+                ->update(['kecamatan_id' => $valueKeca->kecamatan_id]);
+        }
+
+
+        return 'ok';
     }
 
 

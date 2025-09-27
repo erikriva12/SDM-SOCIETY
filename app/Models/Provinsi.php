@@ -10,10 +10,8 @@ class Provinsi extends Model
 {
     use HasFactory;
 
-    protected $table = 'master.provinsi';
+    protected $table = 'provinsi';
     protected $primaryKey = 'provinsi_id';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
     'provinsi_id',
@@ -21,17 +19,7 @@ class Provinsi extends Model
     'nama',
     ];
 
-    // Generate UUID otomatis saat create
-    protected static function booted()
-    {
-        static::creating(function ($model)
-        {
-            if (!$model->provinsi_id)
-            {
-                $model->provinsi_id = (string)Str::uuid();
-            }
-        });
-    }
+
 
     public function kabupaten()
     {
