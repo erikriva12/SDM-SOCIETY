@@ -161,7 +161,7 @@ class WebsiteController extends Controller
                 'jumlah_tiket' => $jumlahTiket,
                 'harga_tiket' => $hargaTiket,
                 'total_bayar' => $totalBayar,
-                'status_bayar' => false,
+                'status_bayar' => 'Unpaid',
                 'kode_transaksi' => $kodeTransaksi,
                 'urutan_kode_transaksi' => $urutan,
             ]);
@@ -188,19 +188,17 @@ class WebsiteController extends Controller
             ], 500);
         }
     }
-    public function migrasi()
+    public function pembayaran($kodeTransaksi)
     {
-        $kecamatan = Kecamatan::whereNotNull('nama')->get();
-
-        foreach ($kecamatan as $valueKeca)
-        {
-            Desa::where('kecamatan_uuid', $valueKeca->kecamatan_uuid)
-                ->whereNull('kecamatan_id')
-                ->update(['kecamatan_id' => $valueKeca->kecamatan_id]);
-        }
-
-
-        return 'ok';
+        $data = [
+            'transaksi' => TransaksiTiket::with('customer',
+            'customer.provinsi',
+            'customer.kota',
+            'customer.kecamatan',
+            'customer.desa',
+            )->where('kode_transaksi', $kodeTransaksi)->firstOrFail(),
+        ];
+        return view('web.pembayaran')->with($data);
     }
 
 

@@ -133,7 +133,7 @@
 <!-- <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><img
     src="{{asset('assets/img/wa.png')}}" alt="" style="width: 50px;"></a> -->
 
-<a href="https://wa.me/6281234567890" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
+<a href="https://wa.me/6282182842862" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
   <i class="bi bi-whatsapp"></i>
 </a>
 

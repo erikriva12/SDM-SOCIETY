@@ -41,10 +41,14 @@ class Customer extends Model
     {
         return $this->belongsTo(Kecamatan::class, 'kecamatan_id', 'kecamatan_id');
     }
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class, 'desa_id', 'desa_id');
+    }
 
     // Relasi ke transaksi tiket
     public function transaksiTiket()
     {
-        return $this->hasMany(TransaksiTiket::class, 'customer_id', 'customer_id');
+        return $this->hasMany(TransaksiTiket::class, 'id', 'customer_id');
     }
 }

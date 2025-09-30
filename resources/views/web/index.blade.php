@@ -292,20 +292,20 @@
             if (response.status === true) {
               let kodeTransaksi = response.data.transaksi.kode_transaksi;
               let totalBayar = response.data.transaksi.total_bayar.toLocaleString();
-              let noAdmin = "6282194641033"; // ganti dengan nomor WA admin
+              let noAdmin = "6282182842862"; // ganti dengan nomor WA admin
               let pesan = `Halo Admin,%0ASaya telah memesan tiket dengan detail:%0A%0A🔑 Kode Transaksi: ${kodeTransaksi}%0A💰 Total Bayar: Rp ${totalBayar}%0A%0AMohon konfirmasi pesanan saya.`;
 
               Swal.fire({
                 title: "Berhasil",
-                html: `<p>Pemesanan Berhasil Dibuat.</p>
-                               <p><b>Kode Transaksi:</b> ${kodeTransaksi}</p>
-                               <p><b>Total Bayar:</b> Rp ${totalBayar}</p>
-                               <p>Silahkan melakukan proses pembayaran ke Admin</p>`,
+                html: `<p>Pemesanan Berhasil Dibuat.</p><p><b>Kode Transaksi:</b> ${kodeTransaksi}</p><p><b>Total Bayar:</b> Rp ${totalBayar}</p><p>Silahkan melakukan proses pembayaran</p>`,
                 icon: "success",
-                confirmButtonText: "Konfirmasi Ke Admin"
+                confirmButtonText: "Lanjut Proses Pembayaran"
               }).then((result) => {
                 if (result.isConfirmed) {
-                  window.open(`https://wa.me/${noAdmin}?text=${pesan}`, "_blank");
+                  // window.open(`https://wa.me/${noAdmin}?text=${pesan}`, "_blank");
+                  var renderUrl = "{{ route('pembayaran', ':transaksiId') }}";
+                  renderUrl = renderUrl.replace(':transaksiId', kodeTransaksi);
+                  window.open(renderUrl, "_blank");
                 }
               });
             } else {

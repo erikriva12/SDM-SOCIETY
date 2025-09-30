@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -18,6 +19,8 @@
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
     <!-- Custom CSS Files -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -27,7 +30,10 @@
 
     <!-- Additional CSS (if any) -->
     @stack('css')
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
+
 <body>
     <div id="app">
         <div class="main-wrapper">
@@ -48,11 +54,12 @@
     </div>
 
     <!-- jQuery and Popper.js (required for Bootstrap 4) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
     <!-- Bootstrap JS (Bootstrap 4) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Custom JS Libraries -->
     <script src="{{ asset('library/jquery.nicescroll/dist/jquery.nicescroll.min.js') }}"></script>
@@ -64,6 +71,7 @@
     <script src="{{ asset('js/custom.js') }}"></script>
 
     <!-- Additional JS (if any) -->
-    @stack('scripts')
+    @yield('scripts')
 </body>
+
 </html>
