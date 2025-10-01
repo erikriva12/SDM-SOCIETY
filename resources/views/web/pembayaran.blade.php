@@ -53,7 +53,8 @@
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Total Bayar</span>
-                                    <span class="detail-value">{{ $transaksi->total_bayar }}</span>
+                                    <span class="detail-value">Rp
+                                        {{ number_format($transaksi->total_bayar, 0, ',', '.') }}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Status Pembayaran</span>
