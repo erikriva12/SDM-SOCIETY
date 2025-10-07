@@ -53,8 +53,7 @@
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Total Bayar</span>
-                                    <span class="detail-value">Rp
-                                        {{ number_format($transaksi->total_bayar, 0, ',', '.') }}</span>
+                                    <span class="detail-value">Rp {{ number_format($transaksi->total_bayar, 0, ',', '.') }}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Status Pembayaran</span>
@@ -108,7 +107,7 @@
 @section('scripts')
     <script>
         function konfirmasiAdmin() {
-            let noAdmin = "6282182842862"; // ganti dengan nomor WA admin
+            let noAdmin = "6285126460133"; // ganti dengan nomor WA admin
             let pesan = `Halo Admin,%0ASaya telah melakukan pembayaran dengan detail:%0A%0A🔑 Kode Transaksi: {{ $transaksi->kode_transaksi }}%0A🔑 Atas Nama: {{ $transaksi->customer->nama }}%0A💰 Total Bayar: Rp {{ $transaksi->total_bayar }}%0A%0AMohon konfirmasi pesanan saya.`;
             window.open(`https://wa.me/${noAdmin}?text=${pesan}`, "_blank");
         }

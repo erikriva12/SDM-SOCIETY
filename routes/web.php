@@ -21,6 +21,10 @@ Route::withoutMiddleware(['auth'])->group(function ()
 
     Route::post('/store-pemesanan', [WebsiteController::class, 'storepemesanan'])->name('storepemesanan');
     Route::get('/pembayaran/{kodeTransaksi}', [WebsiteController::class, 'pembayaran'])->name('pembayaran');
+    Route::get('/csrf-token', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
+
 
 
 });

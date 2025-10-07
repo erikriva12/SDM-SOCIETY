@@ -21,7 +21,7 @@ class WebsiteController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['store']);
     }
 
     /**
@@ -140,7 +140,7 @@ class WebsiteController extends Controller
             );
 
             // Tentukan harga tiket
-            $hargaTiket = 60000;
+            $hargaTiket = 65000;
             $jumlahTiket = (int)$request->quantity;
             $totalBayar = $hargaTiket * $jumlahTiket;
 
@@ -187,6 +187,19 @@ class WebsiteController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+    
+    public function detailPembayaran($kodeTransaksi)
+    {
+        $data = [
+            'transaksi' => TransaksiTiket::with('customer',
+            'customer.provinsi',
+            'customer.kota',
+            'customer.kecamatan',
+            'customer.desa',
+            )->where('kode_transaksi', $kodeTransaksi)->firstOrFail(),
+        ];
+        return view('web.pembayaran-detail')->with($data);
     }
     public function pembayaran($kodeTransaksi)
     {
