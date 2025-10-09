@@ -21,9 +21,10 @@ Route::withoutMiddleware(['auth'])->group(function ()
 
     Route::post('/store-pemesanan', [WebsiteController::class, 'storepemesanan'])->name('storepemesanan');
     Route::get('/pembayaran/{kodeTransaksi}', [WebsiteController::class, 'pembayaran'])->name('pembayaran');
-    Route::get('/csrf-token', function () {
-    return response()->json(['csrf_token' => csrf_token()]);
-});
+    Route::get('/csrf-token', function ()
+    {
+        return response()->json(['csrf_token' => csrf_token()]);
+    });
 
 
 
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function ()
     {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         Route::get('/update_pembayaran', [HomeController::class, 'updatePembayaran'])->name('update_pembayaran');
+        Route::get('/transaksi', [HomeController::class, 'transaksi'])->name('transaksi');
         Route::get('/detail_transaksi/{transaksiId}', [HomeController::class, 'detailTransaksi'])->name('detail_transaksi');
         Route::post('/update-status-bayar', [HomeController::class, 'updateStatus'])->name('update_status_bayar');
 

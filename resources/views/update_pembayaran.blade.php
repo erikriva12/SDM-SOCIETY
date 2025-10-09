@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="main-content">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Update Pembayaran</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-2">Nomor Transaksi</div>
-                            <div class="col-md-10">
-                                <select class="form-control select2" id="idTransaksi" onchange="getTransaksi()">
-                                    <option value="">Pilih</option>
-                                    @foreach ($unpaid as $val)
-                                        <option value="{{ $val->transaksi_tiket_id }}">
-                                            {{ $val->kode_transaksi }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Update Pembayaran</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">Nomor Transaksi</div>
+                        <div class="col-md-10">
+                            <select class="form-control select2" id="idTransaksi" onchange="getTransaksi()">
+                                <option value="">Pilih</option>
+                                @foreach ($unpaid as $val)
+                                    <option value="{{ $val->transaksi_tiket_id }}">
+                                        {{ $val->kode_transaksi }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="row mt-3" id="detailTransaksi">
-                            <!-- detail transaksi akan dimuat di sini -->
-                        </div>
+                    </div>
+                    <div class="row mt-3" id="detailTransaksi">
+                        <!-- detail transaksi akan dimuat di sini -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 @section('scripts')
     <script>

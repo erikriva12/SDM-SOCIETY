@@ -26,6 +26,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function transaksi()
+    {
+        $data = [
+            'transaksi' => TransaksiTiket::with('customer')->where('status_bayar', 'Unpaid')->orderBy('created_at', 'DESC')->get(),
+        ];
+        return view('transaksi')->with($data);
+    }
 
     public function updatePembayaran()
     {
